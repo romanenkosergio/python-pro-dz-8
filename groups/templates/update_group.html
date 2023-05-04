@@ -1,0 +1,12 @@
+{% extends 'extends/base.html' %}
+{% block content %}
+    <h1>{{ title }}</h1>
+    <form action="{% url 'update_group' form.instance.id %}" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Submit</button>
+    <button type="button">
+        <a href="{% url "delete_group" form.instance.id %}">Delete</a>
+    </button>
+    </form>
+{% endblock %}

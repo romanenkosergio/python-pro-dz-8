@@ -1,0 +1,31 @@
+{% extends 'extends/base.html' %}
+{% block content %}
+    {% if teachers %}
+        <h1>{{ title }} - {{ teachers | length }}</h1>
+        <table border="1">
+        <tr>
+            <th>Teacher Name</th>
+            <th></th>
+            <th></th>
+        </tr>
+            {% for teacher in teachers %}
+                <tr>
+                    <td>{{ teacher.first_name }}
+                    </td>
+                    <td>
+                        <a href="{% url 'update_teacher' teacher.id %}">
+                            Update
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'delete_teacher' teacher.id %}">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h1>There are no teachers.</h1>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'extends/base.html' %}
+{% block content %}
+    {% if groups %}
+        <h1>{{ title }} - {{ groups | length }}</h1>
+        <table border="1">
+        <tr>
+            <th>Group Name</th>
+            <th>Teacher Name</th>
+        </tr>
+            {% for group in groups %}
+                <tr>
+                    <td>{{ group.name }}</td>
+                    <td>{{ group.teacher }}</td>
+                     <td>
+                        <a href="{% url 'update_group' group.id %}">
+                            Update
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'delete_group' group.id %}">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+            <h1>There are no groups.</h1>
+    {% endif %}
+{% endblock %}6
